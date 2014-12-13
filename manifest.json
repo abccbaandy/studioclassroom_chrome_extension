@@ -1,0 +1,23 @@
+{
+	"name": "Studio Classroom Video Player",
+	"description": "Hacker",
+	"version": "1",
+	"manifest_version": 2,
+	"background": {
+		"persistent": false,
+		"scripts": ["worker_proxy.js"]
+	},
+	"content_scripts": [{
+		"matches": ["http://w2.goodtv.tv/studio_classroom/"],
+		"js": ["worker_proxy.js", "swfobject.min.js", "content.js"]
+	}],
+	"web_accessible_resources": ["worker_proxy.html"],
+	"permissions": [
+		"unlimitedStorage",
+		"storage",
+		"tabs",
+		"https://dodoto.herokuapp.com/",
+		"http://127.0.0.1:3000/"
+	],
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
