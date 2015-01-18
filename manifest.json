@@ -9,15 +9,18 @@
 	},
 	"content_scripts": [{
 		"matches": ["http://w2.goodtv.tv/studio_classroom/"],
-		"js": ["worker_proxy.js", "swfobject.min.js", "content.js"]
+		"js": [
+			"bower_components/jquery/dist/jquery.min.js",
+			"worker_proxy.js",
+			"bower_components/swfobject/swfobject/swfobject.js",
+			"content.js"]
 	}],
-	"web_accessible_resources": ["worker_proxy.html"],
+	"web_accessible_resources": [
+		"worker_proxy.html",
+		"bower_components/jquery/dist/jquery.min.map"
+	],
 	"permissions": [
-		"unlimitedStorage",
-		"storage",
-		"tabs",
 		"https://dodoto.herokuapp.com/",
 		"http://127.0.0.1:3000/"
-	],
-	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+	]
 }

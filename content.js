@@ -12,6 +12,8 @@ function setVideo () {
         return;
     };
 
+    createPlayerIfNotExist();
+
     var flashvars1 = {
             // Below Video Source is generating by Microsoft Live Smooth Streaming Service via IIS7
                //src: escape("http://webvod1.goodtv.org/SC/HLS/20141213_9ff89/20141213_9ff89-m3u8-aapl.ism/manifest(format=m3u8-aapl)")  //webb old vod
@@ -44,7 +46,6 @@ function initVideoList (linksString) {
     videoList.setAttribute("id", "mySelect");
     videoList.style.width = "350px";
 
-
     var option;
 
     for (var i = 0; i < linksString.links.length; i++) {
@@ -63,10 +64,22 @@ function initVideoList (linksString) {
     // videoList.setAttribute("onchange", setVideo(videoList.value));
 }
 
+function createPlayerIfNotExist () {
+    if (document.getElementById("player1")==null) {
+        // var player = document.createElement("div");
+        // player.setAttribute("id", "player1");
+        // player.setAttribute("class", "player1");
+        // document.getElementById("media-player").appendChild(player);
+        // $('#media-player img').remove();
+        $('#media-player').attr("id", "player1");
+        $('#media-player').attr("class", "player1");
+    };
+}
+
 function workerCallback(event) {
     var args = event.data.args;
-    console.log(args);
-    // getPostImg(args[0], args[1]);
+    // console.log(args);
+
     initVideoList(JSON.parse(args[0]));
 }
 
@@ -81,4 +94,3 @@ function getVideolinks () {
 
 //start here
 getVideolinks();
-// initVideoList();
