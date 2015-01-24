@@ -1,0 +1,43 @@
+{
+    "name": "__MSG_appName__",
+    "version": "0.0.6",
+    "manifest_version": 2,
+    "description": "__MSG_appDescription__",
+    "icons": {
+        "16": "images/icon-16.png",
+        "48": "images/icon-48.png",
+        "128": "images/icon-128.png"
+    },
+    "default_locale": "en",
+    "background": {
+        "scripts": [
+            "scripts/chromereload.js",
+            "scripts/background.js",
+            "worker_proxy.js"
+        ]
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://w2.goodtv.tv/studio_classroom/"
+            ],
+            "js": [
+                "bower_components/jquery/dist/jquery.min.js",
+                "worker_proxy.js",
+                "bower_components/swfobject/swfobject/swfobject.js",
+                "scripts/httpReguest.js",
+                "scripts/contentscript.js"
+            ],
+            "run_at": "document_end",
+            "all_frames": false
+        }
+    ],
+    "web_accessible_resources": [
+        "worker_proxy.html",
+        "bower_components/jquery/dist/jquery.min.map"
+    ],
+    "permissions": [
+        "https://dodoto.herokuapp.com/",
+        "http://127.0.0.1:3000/"
+    ]
+}

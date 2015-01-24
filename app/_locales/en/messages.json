@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Studio Classroom Video Player",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Hacker",
+    "description": "The description of the application"
+  }
+}
