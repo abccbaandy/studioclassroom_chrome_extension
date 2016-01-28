@@ -2,7 +2,7 @@
 //1.change the video url
 //flashvars1.src = escape("http://scvod1.goodtv.org/hls-vod/sc/20141210_96199.m3u8")
 //2.re-init player
-//swfobject.embedSWF("http://w2.goodtv.tv/studio_classroom/flash/GrindPlayer.swf", "player1", "672", "430", "10.2", null, flashvars1, params1, attrs1);
+//swfobject.embedSWF("http://w2.goodtv.tv/studio_classroom/GrindPlayer/GrindPlayer.swf", "player1", "672", "430", "10.2", null, flashvars1, params1, attrs1);
 
 
 function setVideo () {
@@ -36,7 +36,7 @@ function setVideo () {
             name: "player"
         };
 
-        swfobject.embedSWF("http://w2.goodtv.tv/studio_classroom/flash/GrindPlayer.swf", "player1", "672", "430", "10.2", null, flashvars1, params1, attrs1);
+        swfobject.embedSWF("http://w2.goodtv.tv/studio_classroom/GrindPlayer/GrindPlayer.swf", "player1", "672", "430", "10.2", null, flashvars1, params1, attrs1);
     }
 
 function initVideoList (linksString) {
@@ -71,8 +71,8 @@ function createPlayerIfNotExist () {
         // player.setAttribute("class", "player1");
         // document.getElementById("media-player").appendChild(player);
         // $('#media-player img').remove();
-        $('#media-player').attr("id", "player1");
-        $('#media-player').attr("class", "player1");
+        $('#FlashPlayer').attr("id", "player1");
+        $('#FlashPlayer').attr("class", "player1");
     };
 }
 
@@ -92,5 +92,16 @@ function getVideolinks () {
     });
 }
 
+function sendTodayUrl() {
+    var s = document.createElement('script');
+    // TODO: add "script.js" to web_accessible_resources in manifest.json
+    s.src = chrome.extension.getURL('script.js');
+    s.onload = function() {
+        this.parentNode.removeChild(this);
+    };
+    (document.head || document.documentElement).appendChild(s);
+}
+
 //start here
+sendTodayUrl();
 getVideolinks();

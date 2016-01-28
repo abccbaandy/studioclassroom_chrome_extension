@@ -17,7 +17,8 @@
 	}],
 	"web_accessible_resources": [
 		"worker_proxy.html",
-		"bower_components/jquery/dist/jquery.min.map"
+		"bower_components/jquery/dist/jquery.min.map",
+		"script.js"
 	],
 	"permissions": [
 		"https://dodoto.herokuapp.com/",
